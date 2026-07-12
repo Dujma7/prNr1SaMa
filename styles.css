@@ -1,0 +1,111 @@
+
+.body {
+    background-color: #FAF8F5;
+}
+
+.navbar {
+    background-color: #FAF8F5;
+}
+
+.nav-col {
+    background-color: #FAF8F5;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.nav-link {
+    font-size: 1.25rem;
+    font-family: "Poppins";
+    font-weight: 500;
+}
+.nav-link-end {
+    margin-right: 30px;
+}
+
+
+.navbar-brand {
+    font-weight: 900;
+    font-family: "Poppins"
+}
+
+/** ABOUT ME **/
+
+.aboutIMG {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: 300px;
+    margin-bottom: 10%;
+}
+
+.aboutH1 {
+    font-size: 2rem;
+    font-family: "Poppins";
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+p {
+    font-family: "Montserrat";
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-left: 15%;
+    margin-right: 15%;
+    line-height: 1.75;
+    padding-bottom: 3%;
+    text-align: left;
+}
+
+@media (min-width: 992px) {
+    .nav-size {
+        height: 8rem;
+    }
+    p {
+        font-size: 1.7rem;
+        margin-right: 3%;
+    }
+
+    .aboutH1 {
+        font-size: 3rem;
+    }
+
+    .aboutIMG {
+        height: 400px;
+        float: left;
+        margin-right: 5%;
+        margin-bottom: 2%;
+        margin-left: 15%
+        
+    }
+}
+@media (min-width: 1270px) { 
+        .aboutIMG {
+            height: 600px;
+        }
+
+        p {
+        font-size: 1.8rem;
+        margin-right: 3%;
+    }
+        }
+
+/** ANIMATIONS **/
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
