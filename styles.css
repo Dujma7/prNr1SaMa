@@ -117,11 +117,26 @@
     margin-bottom: 10%;
 }
 
-.aboutH1 {
+.quoteH1 {
     font-size: 2rem;
     font-family: "Poppins";
-    margin-bottom: 5%;
     text-align: center;
+    font-weight: 900 ;
+}
+
+.quoteTop {
+    font-size: 5rem;
+    font-family: "Poppins"; 
+    text-align: left;
+    margin-top: 15%;
+    margin-bottom: -20px;
+}
+
+.quoteDown {
+    font-size: 5rem;
+    font-family: "Poppins";
+    margin-bottom: 40%; 
+    text-align: right
 }
 
 p {
