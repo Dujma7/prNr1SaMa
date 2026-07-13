@@ -3,20 +3,102 @@
     background-color: #FAF8F5;
 }
 
-.navbar {
-    background-color: #FAF8F5;
+/** HOME **/
+
+.topDivHero {
+    background-image: url("/images/hero.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.heroH1 {
+    font-size: 4rem;
+    font-weight: 500;
+    padding-left: 15%;
+    font-family: "Playfair Display";
+    padding-top: 20%;
+    z-index: 3;
+}
+
+.heroP {
+    font-family: "Montserrat";
+    font-size: 2rem;
+    font-weight: 200;
+    color: black;
+}
+
+.btn-outline-secondary {
+   font-family: "Playfair Display";
+    margin-left: 15%;
+}
+
+.carouselDiv {
+    height: 100vh;
+    width: 100%;
+    background-image: url("/images/carouselIMG.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.carouselH1 {
+    padding-top: 15%;
+    font-size: 3rem;
+    padding-bottom: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: black;
+    font-family: "Playfair Display";
+}
+
+.promoDiv {
+    height: 110vh;
+    width: "100%";
+    background-image: url("/images/promoIMG.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.promoH1 {
+    padding-top: 15%;
+    font-size: 3rem;
+    padding-bottom: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: white;
+    font-family: "Poppins";
+}
+
+.promoH2 {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: white;
+    font-family: "Playfair Display";
+}
+
+.promoP {
+    font-family: "Montserrat";
+    padding-top: 10%;
+    padding-bottom: 70%;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 .nav-col {
-    background-color: #FAF8F5;
     margin-bottom: 50px;
-    margin-top: 50px;
 }
 
+
 .nav-link {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     font-family: "Poppins";
-    font-weight: 500;
+    font-weight: 600;
 }
 .nav-link-end {
     margin-right: 30px;
@@ -25,7 +107,7 @@
 
 .navbar-brand {
     font-weight: 900;
-    font-family: "Poppins"
+    font-family: "Poppins";
 }
 
 /** ABOUT ME **/
