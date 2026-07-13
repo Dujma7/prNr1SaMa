@@ -150,6 +150,48 @@ p {
     text-align: left;
 }
 
+/** FOOTER **/
+
+.footer {
+    height: 40vh;
+    width: 100%;
+    background-image: url("images/footerIMG.jpg");
+    background-size: cover;
+}
+
+.footerP {
+    font-size: 1rem;
+    font-family: "Montserrat";
+    font-weight: 400;
+    padding-top: 10%;
+}
+
+.footerMFI {
+    font-size: 1rem;
+    font-family: "Montserrat";
+    font-weight: 400
+}
+
+.footerMadeBy {
+    font-size: 0.75rem;
+    text-align: center;
+    font-family: "Montserrat";
+}
+
+.aMadeBy {
+    color: black
+}
+
+.aMadeBy:hover {
+    text-decoration: none;
+    color: black
+
+}
+
+.aMadeBy:visited {
+    color: black
+}
+
 @media (min-width: 992px) {
     .nav-size {
         height: 8rem;
