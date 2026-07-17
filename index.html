@@ -119,24 +119,32 @@
         <p class="promoP" style="position: relative;z-index: 2;">Pogledajte promociju romana <em>Kiša boje tulipana</em> iz Zagreba</p>
         <iframe class="iframe"src="https://www.youtube.com/embed/oAwrfLWklA0?si=Svs0FekeHKUUm40s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
-    <div class="footer" style="position: relative; padding: 40px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+    <div class="footer" style="position: relative; padding: 40px 0; display: flex; flex-direction: column; text-align: center;">
     
     <!-- 1. The White Overlay: Scaled to fit the footer container perfectly -->
     <div style="height: 100%; width: 100%; position: absolute; top: 0; left: 0; z-index: 1; opacity: 0.7; background-color: white;"></div>
     <h3 class="footerH3">Kontakt</h3>
     <!-- 2. Email Row -->
-    <div style=" width: 30%; margin-bottom: 15px; display: block; align-items: left; position: relative; z-index: 2; margin-top: 5%; justify-content: left;">
-        <i class="fa-solid fa-envelope fa-xl" style="margin-right: 3%; margin-bottom: 3%; display: inline;"></i> 
-        <p class="footerP" style="font-weight: 900; display: inline; margin-left: 0;">sanijelaknjiga@gmail.com</p> <br>
-        <a class="aMadeBy" href="https://www.instagram.com/artssanijela_m/" style="display: inline; align-items: left; text-decoration: none;">
-            <i class="fa-brands fa-instagram fa-xl" style="margin-left: 3%; margin-right: 3%;margin-bottom: 3%; display: inline; margin-left: 0;"></i>
-            <p class="footerP" style="display: inline; font-weight: 900;margin-left: 0;">artssanijela_m</p> 
-        </a> <br>
-    <a class="aMadeBy" href="https://www.facebook.com/poetesa.poezija?locale=bn_IN" style="display: inline; align-items: left; text-decoration: none;">
-            <i class="fa-brands fa-square-facebook fa-xl" style="margin-left: 3%; margin-right: 3%;margin-bottom: 3%;"></i>
-            <p class="footerP" style="display: inline; font-weight: 900;margin-left: 0;">Doza Umjetnosti</p> 
-        </a>
- </div>
+    <!-- Main container uses Flexbox to stack rows vertically -->
+<div class="footercon" style="display: flex; flex-direction: column; gap: 15px; margin-top: 5%; margin-bottom: 15px; position: relative; z-index: 2; margin-left: auto; margin-right: auto;">
+    <!-- Row 1: Email -->
+    <div style="width: 100%; display: block; text-align: center;">
+        <i class="fa-solid fa-envelope fa-xl" style="margin-right: 10px;"></i> 
+        <p class="footerP" style="font-weight: 900; margin: 0;">sanijelaknjiga@gmail.com</p> 
+    </div>
+
+    <!-- Row 2: Instagram -->
+    <a class="aMadeBy" href="https://www.instagram.com/artssanijela_m/" style="align-items: center; text-decoration: none; color: inherit;">
+        <i class="fa-brands fa-instagram fa-xl" style="margin-right: 10px;"></i>
+        <p class="footerP" style="font-weight: 900; margin: 0;">artssanijela_m</p> 
+    </a>
+
+    <!-- Row 3: Facebook -->
+    <a class="aMadeBy" href="https://www.facebook.com/poetesa.poezija?locale=bn_IN" style="align-items: center; text-decoration: none; color: inherit;">
+        <i class="fa-brands fa-square-facebook fa-xl" style="margin-right: 10px;"></i>
+        <p class="footerP" style="font-weight: 900; margin: 0;">Doza Umjetnosti</p> 
+    </a>
+</div>
 
     <!-- 5. Copyright and Author Credits -->
     <p class="footerP" style="position: relative; z-index: 2; margin-bottom: 5px; display: flex; margin-left: auto; margin-right: auto;">© Sanijela Matković 2026</p>

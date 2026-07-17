@@ -194,16 +194,22 @@ p {
 }
 
 .footerP {
-    font-size: 1rem;
+    font-size: 0.85rem;
     font-family: "Montserrat";
     font-weight: 500;
     padding-top: 2%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+
+
 }
 
 .footerMFI {
     font-size: 1.2rem;
     font-family: "Montserrat";
-    font-weight: 500
+    font-weight: 500;
+    width: 100%
 }
 
 .footerMadeBy {
@@ -212,8 +218,13 @@ p {
     font-family: "Montserrat";
 }
 
+.footercon {
+    width: 50%;
+}
+
 .aMadeBy {
     color: black;
+    text-align: center;
 }
 
 .aMadeBy:hover {
@@ -299,13 +310,46 @@ p {
             font-size: 1.5rem;
         }
 
-
-
-
         p {
         font-size: 1.8rem;
         margin-right: 3%;
     }
+
+    .footer {
+    width: 100%;
+    background-image: url("images/footerIMG.jpg");
+    background-size: cover;
+}
+
+.footerH3 {
+    position: relative;
+    z-index: 2;
+    font-family: "Montserrat";
+    font-weight: 900;
+}
+
+.footerP {
+    font-size: 1rem;
+    font-family: "Montserrat";
+    font-weight: 500;
+    padding-top: 2%;
+}
+
+.footerMFI {
+    font-size: 1.2rem;
+    font-family: "Montserrat";
+    font-weight: 500
+}
+
+.footerMadeBy {
+    font-size: 0.75rem;
+    text-align: center;
+    font-family: "Montserrat";
+}
+
+.footercon {
+    width: 30%;
+}
         }
 
 /** ANIMATIONS **/
