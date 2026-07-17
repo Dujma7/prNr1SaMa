@@ -1,4 +1,6 @@
-
+body  {
+    margin: 0;
+}
 .body {
     background-color: #FAF8F5;
 }
@@ -9,7 +11,12 @@
     background-image: url("images/hero.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    height: 150vh;
 }
+
+.topDivHeroGhost {
+        height: 150vh
+    }
 
 .heroH1 {
     font-size: 4rem;
@@ -50,6 +57,27 @@
     text-align: center;
     color: black;
     font-family: "Playfair Display";
+}
+
+.iframe {
+    position: relative;
+    z-index: 2;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width:"90%";
+    height:300px
+}
+
+.carousel-control-next, .carousel-control-prev {
+    filter: invert(100);
+}
+
+.carouselIMG {
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    width: 80%;
 }
 
 .promoDiv {
@@ -153,23 +181,29 @@ p {
 /** FOOTER **/
 
 .footer {
-    height: 40vh;
     width: 100%;
     background-image: url("images/footerIMG.jpg");
     background-size: cover;
 }
 
+.footerH3 {
+    position: relative;
+    z-index: 2;
+    font-family: "Montserrat";
+    font-weight: 900;
+}
+
 .footerP {
     font-size: 1rem;
     font-family: "Montserrat";
-    font-weight: 400;
-    padding-top: 5%;
+    font-weight: 500;
+    padding-top: 2%;
 }
 
 .footerMFI {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-family: "Montserrat";
-    font-weight: 400
+    font-weight: 500
 }
 
 .footerMadeBy {
@@ -179,7 +213,7 @@ p {
 }
 
 .aMadeBy {
-    color: black
+    color: black;
 }
 
 .aMadeBy:hover {
@@ -215,9 +249,58 @@ p {
     }
 }
 @media (min-width: 1270px) { 
+
+    .topDivHero {
+        height: 100vh;
+    }
+
+    .topDivHeroGhost {
+        height: 100vh
+    }
+
+        .heroH1 {
+            margin-top: 10%;
+            font-size: 5rem;
+        }
         .aboutIMG {
             height: 600px;
         }
+
+        .carouselIMG {
+            height: 70vh;
+            width: auto;
+        }
+
+        .carouselH1 {
+            padding-top: 5%;
+        }
+
+        .promoH1 {
+            padding-top: 5%;
+            font-size: 4rem;
+        }
+
+        .promoH2 {
+            padding-top: 1%;
+            font-size: 3rem;
+        }
+
+        .promoP {
+            padding-top: 2%;
+            padding-bottom: 3%;
+        }
+
+        .iframe {
+            width: 80vh;
+            height: 40vh;
+        }
+
+        .footerP {
+            font-size: 1.5rem;
+        }
+
+
+
 
         p {
         font-size: 1.8rem;
