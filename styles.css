@@ -1,6 +1,10 @@
 body  {
     margin: 0;
 }
+
+html {
+  scroll-behavior: smooth;
+}
 .body {
     background-color: #FAF8F5;
 }
@@ -24,6 +28,7 @@ body  {
     padding-left: 15%;
     font-family: "Playfair Display";
     padding-top: 5%;
+    margin-right: 5%;
     z-index: 3;
 }
 
@@ -48,8 +53,54 @@ body  {
     background-position: center;
 }
 
+
+
+/* 1. Give the carousel inner track a fixed height relative to the screen */
+.carousel-inner {
+    height: auto; /* Adjust this number (e.g., 70vh, 80vh) depending on how much screen space you want it to take */
+    overflow: visible
+}
+
+/* 2. Force Bootstrap's slide containers to fill that exact height */
+.carousel-item {
+    height: auto;
+}
+
+/* 3. The magic fix for your images */
+.carouselIMG {
+    width: 80% !important;
+    height: auto;
+    object-fit: scale-down;
+    max-height: 80vh; /* Keeps the whole image visible without distortion, adding letterboxes if needed */
+    
+    /* Center the image perfectly if it's narrower than the screen */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.carouselH2 {
+    padding-top: 1%;
+    font-size: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: black;
+    font-family: "Playfair Display";
+}
+
+.carouselDisplayH1 {
+    padding-top: 5%;
+    font-size: 3rem;
+    padding-bottom: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: black;
+    font-family: "Playfair Display";
+}
+
 .carouselH1 {
-    padding-top: 15%;
+    padding-top: 5%;
     font-size: 3rem;
     padding-bottom: 5%;
     margin-left: auto;
@@ -65,9 +116,11 @@ body  {
     margin-left: auto;
     margin-right: auto;
     display: block;
-    width:"90%";
-    height:300px
+    width: 90%;
+    aspect-ratio: 16/9;
 }
+
+
 
 .carousel-control-next, .carousel-control-prev {
     filter: invert(100);
@@ -76,12 +129,13 @@ body  {
 .carouselIMG {
     margin-left: auto;
     margin-right: auto;
-    height: auto;
-    width: 80%;
+    width: auto;
+    height: 90%;
+    object-fit: contain;
 }
 
 .promoDiv {
-    height: 110vh;
+    min-height: 110vh;
     width: "100%";
     background-image: url("images/promoIMG.jpg");
     background-repeat: no-repeat;
@@ -118,6 +172,51 @@ body  {
     text-align: center;
 }
 
+.promoDiv {
+    position: relative;
+    width: 100%;
+    /* Use min-height so it spans the screen but can grow if content needs space */
+    min-height: 110vh; 
+    /* Optional: adds breathing room at the bottom on mobile */
+    padding-bottom: 2rem; 
+}
+
+/* Replaces your inline overlay div */
+.promoOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Spans the full height of promoDiv, even if it expands */
+    background-color: #000000;
+    opacity: 0.8;
+    z-index: 1;
+}
+
+/* Text elements need relative positioning to stay above the overlay */
+.promoH1, .promoH2, .promoP {
+    position: relative;
+    z-index: 2;
+}
+
+/* The video container controls the layout width */
+.framediv {
+    position: relative;
+    z-index: 2;
+    width: 80%;
+    max-width: 800px; /* Optional cap: keeps the video from getting absurdly giant on huge monitors */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* The magic for responsive iframes */
+.iframe {
+    width: 100%;
+    /* Dictates the height automatically based on the width to keep it widescreen */
+    aspect-ratio: 16 / 9; 
+    display: block;
+}
+
 
 .nav-link {
     font-size: 1.4rem;
@@ -147,6 +246,13 @@ body  {
 
 .quoteH1 {
     font-size: 2rem;
+    font-family: "Poppins";
+    text-align: center;
+    font-weight: 900 ;
+}
+
+.quoteP  {
+    font-size: 1.5rem;
     font-family: "Poppins";
     text-align: center;
     font-weight: 900 ;
@@ -237,10 +343,36 @@ p {
     color: black
 }
 
+
+/** SLIKARSTVO **/
+
+.carouselDisplayDiv {
+    height: 110vh;
+    width: 100%;
+    overflow: visible;
+    
+    /* Combine them here: Gradient FIRST, Image SECOND */
+    background-image: 
+        linear-gradient(to left, rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.85) 50%), 
+        url("images/dalekisvjetovi.jpg");
+        
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+@media (min-width: 992px) and (max-width: 1110px) {
+    .nav-link {font-size: 1.1rem;
+    }
+}
+
 @media (min-width: 992px) {
+    .heroH1{
+        margin-right: 10%;
+    }
     .nav-size {
         height: 8rem;
     }
+
     p {
         font-size: 1.7rem;
         margin-right: 3%;

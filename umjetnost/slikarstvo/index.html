@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- CSS Link and Bootstrap -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <!-- Fonts -->
@@ -29,13 +29,13 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">HOME<span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../">HOME<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about/">O MENI</a>
+                    <a class="nav-link" href="../../about/">O MENI</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item active dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     UMJETNOST
                     </a>
@@ -44,7 +44,7 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">PROZA</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/umjetnost/slikarstvo/">SLIKARSTVO</a>
+                    <a class="dropdown-item" href="#">SLIKARSTVO</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -59,37 +59,54 @@
                 </ul>
             </div>
         </nav>
-        <h1 class="heroH1" style="color: #000000; position: relative; z-index: 2;">Umjetnost prožeta stihom i bojom</h1>
-        <p class="heroP" style="color: #000000; position: relative; z-index: 2;">Otkrijte ljepotu u svakom potezu i u svakoj riječi!</p>
-        <button type="button" class="btn btn-lg btn-outline-secondary" style="position: relative; z-index: 2; height: 400;">Pogledajte</button>
+        <div style="width: 60%; margin-left: auto; margin-right: auto; padding-top: 7.5%;">
+            <h1 class="quoteTop fade-in" style="position: relative; z-index: 2;">❝</h1>
+            <h1 class="quoteH1 fade-in" style="color: #000000; position: relative; z-index: 2;">Veliki umjetnik nikada ne vidi stvari onakvima kakve jesu. Kad bi ih vidio takvima, više ne bi bio umjetnik.</h1>
+            <h1 class="quoteDown fade-in" style="position: relative; z-index: 2; margin-bottom: 5%;">❞</h1>
+            <em><p class="quoteP fade-in" style="color: #000000; position: relative; z-index: 2; margin-left: auto; margin-right: auto;">Vincent van Gogh</p></em>
+        </div>
     </div>
 
-    <div class="carouselDiv">
+    <div class="carouselDisplayDiv">
         <div style="position: absolute; z-index: 1; opacity: 0.7; width: 100%; height: 110vh; background-color: white;"></div>
-        <em><h1 class="carouselH1" style="position: relative; z-index: 2;">Sany ARTS</h1></em>
+        <em><h1 class="carouselDisplayH1" style="position: relative; z-index: 2;">Tajna boje</h1></em>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="position: relative;z-index: 2;">
-
   <div class="carousel-inner">
     <div class="carousel-item active">
-    <img class="d-block carouselIMG" src="./images/1.jpg" alt="Prva slika">
+    <h2 class="carouselH2">Zarobljeno proljeće</h2>
+    <img class="d-block carouselIMG" src="../../images/zarobljenoproljece.jpg" alt="Zarobljeno proljeće">
 </div>
 <div class="carousel-item">
-    <img class="d-block carouselIMG" src="./images/2.jpg" alt="Druga slika">
+    <h2 class="carouselH2">Daljina hortenzija</h2>
+    <img class="d-block carouselIMG" src="../../images/daljinahortenzija.jpg" alt="Daljina hortenzija">
 </div>
 <div class="carousel-item">
-    <img class="d-block carouselIMG"  src="./images/3.jpg" alt="Treća slika">
+    <h2 class="carouselH2">Špalir ruža</h2>
+    <img class="d-block carouselIMG"  src="../../images/spalirruza.jpg" alt="Špalir ruža">
 </div>
 <div class="carousel-item">
-    <img class="d-block carouselIMG"  src="./images/4.jpg" alt="Četvrta slika">
+    <h2 class="carouselH2">Svađa peluda</h2>
+    <img class="d-block carouselIMG"  src="../../images/svadjapeluda.jpg" alt="Svađa peluda">
 </div>
 <div class="carousel-item">
-    <img class="d-block carouselIMG"  src="./images/5.jpg" alt="Peta slika">
+    <h2 class="carouselH2">Parodija jeseni</h2>
+    <img class="d-block carouselIMG"  src="../../images/parodijajeseni.jpg" alt="Parodija jeseni">
 </div>
 <div class="carousel-item">
-    <img class="d-block carouselIMG"  src="./images/6.jpg" alt="Šesta slika">
+    <h2 class="carouselH2">Plavi sunovrati</h2>
+    <img class="d-block carouselIMG"  src="../../images/plavi sunovrati.jpg" alt="Plavi sunovrati">
 </div>
 <div class="carousel-item">
-    <img class="d-block carouselIMG"  src="./images/7.jpg" alt="Sedma slika">
+    <h2 class="carouselH2">Zebre</h2>
+    <img class="d-block carouselIMG"  src="../../images/zebre.jpg" alt="Zebre">
+</div>
+<div class="carousel-item">
+    <h2 class="carouselH2">Neizvjesnost</h2>
+    <img class="d-block carouselIMG"  src="../../images/neizvjesnost.jpg" alt="Neizvjesnost">
+</div>
+<div class="carousel-item">
+    <h2 class="carouselH2">Daleki svjetovi</h2>
+    <img class="d-block carouselIMG"  src="../../images/dalekisvjetovi.jpg" alt="Daleki svjetovi">
 </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -103,18 +120,7 @@
 </div>
     </div>
     
-    <div class="promoDiv">
-    <!-- Removed inline height so it naturally matches the parent's min-height -->
-    <div class="promoOverlay"></div>
-    
-    <h1 class="promoH1">Promocija romana</h1>
-    <em><h2 class="promoH2">"Kiša boje tulipana"</h2></em>
-    <p class="promoP">Pogledajte promociju romana <em>Kiša boje tulipana</em> iz zagrebačke knjižnice i čitaonice Bogdana Ogrizovića</p>
-    
-    <div class="framediv">
-        <iframe class="iframe" src="https://www.youtube.com/embed/oAwrfLWklA0?si=Svs0FekeHKUUm40s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-</div>
+
     <div class="footer" id="footer" style="position: relative; padding: 40px 0; display: flex; flex-direction: column; text-align: center;">
     
     <!-- 1. The White Overlay: Scaled to fit the footer container perfectly -->
