@@ -403,6 +403,51 @@ p {
     background-size: cover;
     background-position: center;
 }
+
+/** POEZIJA **/
+
+.poetryP {
+    font-family: "Montserrat";
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-left: 15%;
+    margin-right: 15%;
+    line-height: 1.75;
+    text-align: left;
+    position: relative;
+    z-index: 2;
+}
+
+.poetryFullP {
+    font-family: "Montserrat";
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-left: 15%;
+    margin-right: 15%;
+    line-height: 2;
+    text-align: left;
+    position: relative;
+    z-index: 2;
+}
+
+.poetryDiv {
+    position: relative;
+    width: 100%;
+    background-image: url("images/poetryIMG.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+}
+
+.poetryWorksDiv {
+    min-height: 110vh;
+    width: "100%";
+    background-image: url("images/parodijajeseni.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
 @media (min-width: 992px) and (max-width: 1110px) {
     .nav-link {font-size: 1.1rem;
     }
@@ -488,6 +533,10 @@ p {
         p {
         font-size: 1.8rem;
         margin-right: 3%;
+    }
+
+    .poetryP {
+        font-size: 1.7rem;
     }
 
     .footer {
