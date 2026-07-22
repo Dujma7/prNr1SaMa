@@ -63,19 +63,32 @@ html {
 
 /* 2. Force Bootstrap's slide containers to fill that exact height */
 .carousel-item {
-    height: auto;
+    height: 75vh;
+  
+  /* Flexbox centers everything inside the slide */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertical alignment */
+  align-items: center;     /* Horizontal alignment */
 }
+
 
 /* 3. The magic fix for your images */
 .carouselIMG {
     width: 80% !important;
     height: auto;
     object-fit: scale-down;
-    max-height: 80vh; /* Keeps the whole image visible without distortion, adding letterboxes if needed */
+    max-height: 70vh; /* Keeps the whole image visible without distortion, adding letterboxes if needed */
     
     /* Center the image perfectly if it's narrower than the screen */
     margin-left: auto;
     margin-right: auto;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  top: 4rem;                /* Pushes arrows down below the H2 heading */
+  bottom: 0;                /* Keeps arrows centered vertically over the image area */
 }
 
 .carouselH2 {
@@ -360,6 +373,36 @@ p {
     background-size: cover;
     background-position: center;
 }
+
+.carouselDisplay2Div {
+    height: 110vh;
+    width: 100%;
+    overflow: visible;
+    
+    /* Combine them here: Gradient FIRST, Image SECOND */
+    background-image: 
+        linear-gradient(to left, rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.85) 50%), 
+        url("images/plesjabuka.jpg");
+        
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.carouselDisplay3Div {
+    height: 110vh;
+    width: 100%;
+    overflow: visible;
+    
+    /* Combine them here: Gradient FIRST, Image SECOND */
+    background-image: 
+        linear-gradient(to left, rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.85) 50%), 
+        url("images/ples5.jpg");
+        
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
 @media (min-width: 992px) and (max-width: 1110px) {
     .nav-link {font-size: 1.1rem;
     }
@@ -410,7 +453,7 @@ p {
         }
 
         .carouselIMG {
-            height: 70vh;
+            max-height: 65vh;
             width: auto;
         }
 
