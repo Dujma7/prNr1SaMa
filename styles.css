@@ -430,6 +430,33 @@ p {
     z-index: 2;
 }
 
+.custom-art-list {
+  max-width: 400px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.custom-art-list .list-group-item {
+  background: rgba(255, 255, 255, 0.65); /* Soft, translucent white */
+  backdrop-filter: blur(12px); /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(12px);
+  color: #2b2b2b;
+  border-color: rgba(0, 0, 0, 0.08); /* Subtle dividers */
+  text-align: center;
+  padding: 1rem 1.25rem;
+  font-family: 'Playfair Display', Georgia, serif; /* Keeps typography elegant */
+  transition: all 0.3s ease;
+}
+
+/* Hover state */
+.custom-art-list .list-group-item:hover {
+  background: rgba(255, 255, 255, 0.85);
+  color: #000;
+  padding-left: 1.75rem; /* Slight slide effect on hover */
+}
+
 .poetryDiv {
     position: relative;
     width: 100%;
