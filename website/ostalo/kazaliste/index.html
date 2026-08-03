@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+
     <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,11 +53,11 @@
                 <a class="nav-link" href="#footer">KNJIGE</a>
             </li>
             <li class="nav-item dropdown">
-                    <a class="nav-link-end nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link-end nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     OSTALO
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="../poezija/">KAZALIŠTE</a>
+                    <a class="dropdown-item" href="./">KAZALIŠTE</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="../poticajna-misao/">POTICAJNA MISAO</a>
                     <div class="dropdown-divider"></div>
@@ -79,9 +72,50 @@
             </div>
         </nav>
 
-        <section class="blog-container">
-            <em><h1 class="carouselH1" style="font-size: 3.5rem; font-weight: 700;">Poticajne misli</h1></em>
-        </section> 
+        <section class="blog-container" style="background-color: #FAF8F5;">
+            <em><h1 class="carouselH1" style="font-size: 3.5rem; font-weight: 700;">Kazalište</h1></em>
+        <div style="position: absolute; z-index: 1; opacity: 0.7; height: 100%; background-color: #FAF8F5;"></div>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="position: relative;z-index: 2;">
+  <div class="carousel-inner" style="background-color: #FAF8F5;">
+    <div class="carousel-item active">
+        <img class="d-block carouselIMG" src="../../images/01f.jpg" alt="Slika scene">
+    </div>
+        <div class="carousel-item">
+            <img class="d-block carouselIMG" src="../../images/01j.jpg" alt="Slika scene">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block carouselIMG" src="../../images/03j.jpg" alt="Slika scene">
+        </div>
+        <div class="carousel-item"><img class="d-block carouselIMG" src="../../images/02j.jpg" alt="Slika scene">
+    </div>
+        <div class="carousel-item">
+            <img class="d-block carouselIMG" src="../../images/01f.jpg" alt="Slika scene">
+    </div>
+        <div class="carousel-item">
+            <img class="d-block carouselIMG" src="../../images/04j.jpg" alt="Slika scene">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" style="color: #000000" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+  </section>
+  <div class="promoDiv" style="padding-bottom: 20%; background-image: url(../../images/01f.jpg);">
+    <!-- Removed inline height so it naturally matches the parent's min-height -->
+    <div class="promoOverlay"></div>
+    
+    <h1 class="promoH1">Igrokaz <em>„Božićni dar“</em></h1>
+    <p class="promoP">Pogledajte igrokaz <em>Božićni dar</em> na <em>YouTubeu</em></p>
+    
+    <div class="framediv">
+        <iframe class="iframe" src="https://www.youtube.com/embed/gOhNXNFjaDM?si=sU7-8Ge9s6sA-Ep_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+    
         
     <div class="footer" id="footer" style="position: relative; padding: 40px 0; display: flex; flex-direction: column; text-align: center;">
     
@@ -119,54 +153,5 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-</body>
-</html>
-    <script type="module">
-        import { client } from "../../blog/sanity.js";
-
-        const posts = await client.fetch(`
-            *[_type == "Poticajna-misao"] | order(date desc) {
-                title,
-                slug,
-                date,
-                misao,
-                paragraph1
-            }
-        `);
-
-        console.log(posts)
-
-        const container = document.querySelector(".blog-container");
-
-        posts.forEach(post => {
-
-            const date = new Date(post.date);
-
-            const formattedDate = date.toLocaleDateString("hr-HR", {
-                day: "numeric",
-                month: "long",
-                year: "numeric"
-            });
-
-
-            document.querySelector(".blog-container").innerHTML += `
-
-            <article class="blog-card">
-
-                <h2>${post.title}</h2>
-
-                <p class="blog-date">
-                    <em>${formattedDate}</em>
-                </p>
-                <a href="post.html?slug=${post.slug.current}">
-                    Čitaj više →
-                </a>
-
-            </article>
-
-            `;
-
-        });
-    </script>
 </body>
 </html>
