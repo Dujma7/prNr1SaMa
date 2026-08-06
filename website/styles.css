@@ -309,7 +309,7 @@ p {
 
 .virtualnakavaA:hover {
     color: #000;
-    
+
 }
 
 /** FOOTER **/
@@ -475,7 +475,7 @@ p {
 .poetryDiv {
     position: relative;
     width: 100%;
-    background-image: url("images/poetryIMG.jpg");
+    background-image: url("images/promocija5.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
@@ -585,6 +585,151 @@ p {
 .post-content p {
 
     margin-bottom:35px;
+
+}
+
+/* Styling for Sanity Portable Text content inside #post-body */
+/* ==========================
+   BLOG POST STYLING
+========================== */
+
+.post-container {
+    max-width: 900px;
+    margin: 80px auto;
+    padding: 0 25px;
+}
+
+
+/* Main title */
+.post-container h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 3.2rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #222;
+    margin-bottom: 15px;
+}
+
+
+/* Date */
+.post-date {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #777;
+    margin-bottom: 60px;
+}
+
+
+
+/* Article content */
+.portable-text {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: #333;
+    overflow-wrap: anywhere;
+}
+
+
+/* Paragraph spacing */
+.portable-text p {
+    margin-bottom: 25px;
+    margin-left: 0 !important;
+}
+
+
+/* Headers inside blog */
+.portable-text h1,
+.portable-text h2,
+.portable-text h3 {
+    font-family: "Playfair Display", serif;
+    color: #222;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+
+.portable-text h1 {
+    font-size: 2.5rem;
+}
+
+.portable-text h2 {
+    font-size: 2rem;
+}
+
+.portable-text h3 {
+    font-size: 1.5rem;
+}
+
+
+/* Bold text */
+.portable-text strong {
+    font-weight: 700;
+}
+
+
+/* Italic text */
+.portable-text em {
+    font-style: italic;
+}
+
+.portable-text h4,
+.portable-text h5,
+.portable-text h6 {
+    font-family: "Playfair Display", serif;
+    color: #222;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.portable-text h4 {
+    font-size: 1.3rem !important;
+}
+
+.portable-text h5 {
+    font-size: 1.15rem !important;
+}
+
+.portable-text h6 {
+    font-size: 1rem !important;
+    letter-spacing: 0.08em;
+}
+
+
+/* Quotes */
+.portable-text blockquote {
+    border-left: 4px solid #333;
+    padding-left: 25px;
+    margin: 35px 0;
+    font-family: "Playfair Display", serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: #555;
+}
+
+
+/* Mobile */
+@media(max-width:768px){
+
+    .post-container {
+        margin-top: 40px;
+    }
+
+    .post-container h1 {
+        font-size: 2.2rem;
+    }
+
+    #misao {
+        font-size: 1.7rem !important;
+    }
+
+    .portable-text {
+        font-size: 1rem;
+    }
 
 }
 
