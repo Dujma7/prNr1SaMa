@@ -650,6 +650,15 @@ p {
     font-weight: 600;
 }
 
+.post-image {
+    width: 100%;
+    max-width: 850px;
+    height: auto;
+    margin: 40px auto;
+    display: block;
+    object-fit: cover;
+}
+
 
 .portable-text h1 {
     font-size: 2.5rem;

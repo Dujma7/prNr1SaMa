@@ -1,7 +1,7 @@
 import {defineField, defineType} from 'sanity'
 
-export default defineType({
-  name: 'Blog',
+export const Blog = defineType({
+  name: 'BlogPost',
   title: 'Blog',
   type: 'document',
   fields: [
@@ -9,49 +9,54 @@ export default defineType({
       name: 'title',
       title: 'Naslov',
       type: 'string',
+      validation: Rule => Rule.required(),
     }),
+
     defineField({
       name: 'slug',
-      title: 'Slug (URL upisa)',
-      type: "slug",
+      title: 'Slug',
+      type: 'slug',
       options: {
-    source: 'title',
-  },
+        source: 'title',
+        maxLength: 96,
+      },
+      validation: Rule => Rule.required(),
     }),
+
     defineField({
-      name: 'date',
+      name: 'publishedAt',
       title: 'Datum',
-      type: "date",
+      type: 'datetime',
+      initialValue: () => new Date().toISOString(),
+      validation: Rule => Rule.required(),
     }),
+
     defineField({
-        name: "paragraph1",
-        title: "Prvi paragraf",
-        type: "string", 
+    name: "image",
+    title: "Main image",
+    type: "image",
+    options: {
+        hotspot: true
+    }
+}),
+
+    defineField({
+      name: 'content',
+      title: 'Sadržaj',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+        },
+      ],
+      validation: Rule => Rule.required(),
     }),
-    defineField({
-        name: "image1",
-        title: "Prva slika",
-        type: "image", 
-    }),
-    defineField({
-        name: "paragraph2",
-        title: "Drugi paragraf",
-        type: "string", 
-    }),
-    defineField({
-        name: "paragraph3",
-        title: "Treći paragraf",
-        type: "string", 
-    }),
-    defineField({
-        name: "image2",
-        title: "Druga slika",
-        type: "image", 
-    }),
-    defineField({
-        name: "paragraph4",
-        title: "Četvrti paragraf",
-        type: "string", 
-    })
   ],
+
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'publishedAt',
+    },
+  },
 })

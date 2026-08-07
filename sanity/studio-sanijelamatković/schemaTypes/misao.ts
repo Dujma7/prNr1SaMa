@@ -9,39 +9,45 @@ export default defineType({
       name: 'title',
       title: 'Naslov',
       type: 'string',
+      validation: Rule => Rule.required(),
     }),
+
     defineField({
       name: 'slug',
-      title: 'Slug (URL upisa)',
-      type: "slug",
+      title: 'Slug',
+      type: 'slug',
       options: {
-    source: 'title',
-  },
+        source: 'title',
+        maxLength: 96,
+      },
+      validation: Rule => Rule.required(),
     }),
+
     defineField({
-      name: 'date',
+      name: 'publishedAt',
       title: 'Datum',
-      type: "date",
+      type: 'datetime',
+      initialValue: () => new Date().toISOString(),
+      validation: Rule => Rule.required(),
     }),
+
     defineField({
-        name: "misao",
-        title: "misao",
-        type: "string", 
-    }),
-    defineField({
-        name: "image1",
-        title: "Prva slika",
-        type: "image", 
-    }),
-    defineField({
-        name: "paragraph1",
-        title: "Prvi paragraf",
-        type: "string", 
-    }),
-    defineField({
-        name: "paragraph2",
-        title: "Drugi paragraf",
-        type: "string", 
+      name: 'content',
+      title: 'Sadržaj',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+        },
+      ],
+      validation: Rule => Rule.required(),
     }),
   ],
+
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'publishedAt',
+    },
+  },
 })

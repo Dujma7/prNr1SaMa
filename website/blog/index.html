@@ -123,24 +123,33 @@
 </body>
 </html>
     <script type="module">
-        import { client } from "./sanity.js";
+    import { client } from "./sanity.js";
 
+    async function loadPosts() {
+        // Exclude hidden drafts with !(_id in path("drafts.**"))
         const posts = await client.fetch(`
-            *[_type == "Blog"] | order(date desc) {
+            *[_type == "BlogPost" && !(_id in path("drafts.**"))] | order(_createdAt desc) {
+                _id,
                 title,
                 slug,
-                date,
-                paragraph1
+                publishedAt,
+                _createdAt
             }
-        `);
+        `, {}, { cache: "no-store" });
 
-        console.log(posts)
+        console.log("Fethed Posts from Sanity:", posts);
 
         const container = document.querySelector(".blog-container");
+        if (!container) return;
+
+        if (posts.length === 0) {
+            container.innerHTML += `<p>Nema dostupnih objava.</p>`;
+            return;
+        }
 
         posts.forEach(post => {
-
-            const date = new Date(post.date);
+            const rawDate = post.publishedAt || post._createdAt;
+            const date = rawDate ? new Date(rawDate) : new Date();
 
             const formattedDate = date.toLocaleDateString("hr-HR", {
                 day: "numeric",
@@ -148,25 +157,23 @@
                 year: "numeric"
             });
 
+            const slugUrl = post.slug?.current || "#";
 
-            document.querySelector(".blog-container").innerHTML += `
-
-            <article class="blog-card">
-
-                <h2>${post.title}</h2>
-
-                <p class="blog-date">
-                    <em>${formattedDate}</em>
-                </p>
-                <a href="post.html?slug=${post.slug.current}">
-                    Čitaj više →
-                </a>
-
-            </article>
-
+            container.innerHTML += `
+                <article class="blog-card">
+                    <h2>${post.title}</h2>
+                    <p class="blog-date">
+                        <em>${formattedDate}</em>
+                    </p>
+                    <a href="post.html?slug=${slugUrl}">
+                        Čitaj više →
+                    </a>
+                </article>
             `;
-
         });
-    </script>
+    }
+
+    loadPosts();
+</script>
 </body>
 </html>
