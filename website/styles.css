@@ -22,6 +22,20 @@ html {
         height: 150vh
     }
 
+.aboutDivHome {
+    height: 75vh;
+    width: 100%;
+    overflow: visible;
+    
+    /* Combine them here: Gradient FIRST, Image SECOND */
+    background-image: 
+        linear-gradient(to left, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.1) 70%), 
+        url("images/aboutNaslovnica.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
 .heroH1 {
     font-size: 4rem;
     font-weight: 500;
@@ -155,6 +169,13 @@ html {
     background-size: cover;
     background-position: center;
 }
+
+.promoDiv1 {
+    min-height: 75vh;
+    width: "100%";
+    background-color: #1b3160;
+}
+
 
 .promoH1 {
     padding-top: 15%;
@@ -403,6 +424,8 @@ p {
     background-size: cover;
     background-position: center;
 }
+
+
 
 .carouselDisplay3Div {
     height: 110vh;
@@ -660,6 +683,7 @@ p {
 }
 
 
+
 .portable-text h1 {
     font-size: 2.5rem;
 }
@@ -724,6 +748,10 @@ p {
 /* Mobile */
 @media(max-width:768px){
 
+    .RaPi {
+    background-position: center center;
+}
+
     .post-container {
         margin-top: 40px;
     }
@@ -740,6 +768,18 @@ p {
         font-size: 1rem;
     }
 
+
+
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+     .RaSl {
+        background-position: center center;
+    }
+    .RaSl {
+        background-position: center center;
+    }
+
 }
 
 @media (min-width: 992px) and (max-width: 1110px) {
@@ -748,6 +788,11 @@ p {
 }
 
 @media (min-width: 992px) {
+
+    .RaSl {
+        background-position: center center;
+    }
+
     .heroH1{
         margin-right: 10%;
     }
