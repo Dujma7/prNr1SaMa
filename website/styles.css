@@ -23,7 +23,6 @@ html {
     }
 
 .aboutDivHome {
-    height: 75vh;
     width: 100%;
     overflow: visible;
     
@@ -399,12 +398,6 @@ p {
     height: 110vh;
     width: 100%;
     overflow: visible;
-    
-    /* Combine them here: Gradient FIRST, Image SECOND */
-    background-image: 
-        linear-gradient(to left, rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.85) 50%), 
-        url("images/dalekisvjetovi.jpg");
-        
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -952,4 +945,17 @@ p {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Keeps elements hidden initially */
+.content-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease-in-out;
+}
+
+/* Added via JS when Sanity data is injected */
+.content-visible {
+    opacity: 1;
+    visibility: visible;
 }
