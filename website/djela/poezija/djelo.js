@@ -1,5 +1,5 @@
 import { client } from "../../blog/sanity.js"
-
+import "../../../sponsor.js"
 
 async function renderPoem() {
   const urlParams = new URLSearchParams(window.location.search);

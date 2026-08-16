@@ -1,5 +1,6 @@
 // Prilagodi relativnu putanju ovisno o tome gdje se slikarstvo.js nalazi u odnosu na sanity.js
 import { client } from "../../blog/sanity.js";
+import "../../../sponsor.js"
 
 const query = `*[_type == "galleryPage"]{
   albumTitle,

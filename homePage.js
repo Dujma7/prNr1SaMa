@@ -1,4 +1,5 @@
 import {client} from "./website/blog/sanity.js"
+import "./sponsor.js"
 
 const query = `*[_type == "homePage"][0]{
   heroTitle,

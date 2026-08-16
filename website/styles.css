@@ -959,3 +959,86 @@ p {
     opacity: 1;
     visibility: visible;
 }
+
+/** reklame **/
+
+/* Kontejner sekcije - drži 80% širine i ostale tvoje postavke */
+.sponsors-section {
+  width: 80%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 5%;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 0;
+}
+
+.my-4 {
+    margin-bottom: 0;
+}
+
+/* Unutrašnji grid kontejner */
+.sponsors-grid {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Link / kartica reklame */
+.sponsor-card {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  text-decoration: none !important;
+}
+
+/* Sve slike unutar reklama po defaultu */
+.sponsor-card img {
+  border-radius: 4px;
+  object-fit: contain;
+  max-height: 200px;
+}
+
+/* --- KONTROLA PREKLOPA NA 900px --- */
+
+/* 1. Ekran MANJI od 900px (Mobiteli i tableti) */
+@media (max-width: 899px) {
+  /* Skriva desktop sliku */
+  .sponsor-card img.sponsor-desktop-img {
+    display: none !important;
+  }
+  
+  /* Prikazuje mobilnu sliku i fiksira je na 200px da ne bude ogromna */
+  .sponsor-card img.sponsor-mobile-img {
+    display: block !important;
+    width: 200px !important;
+    height: 200px !important;
+    max-width: 200px !important;
+    max-height: 200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* 2. Ekran VEĆI ili JEDNAK 900px (Desktop) */
+@media (min-width: 900px) {
+  /* Skriva mobilnu sliku */
+  .sponsor-card img.sponsor-mobile-img {
+    display: none !important;
+  }
+
+  /* Prikazuje desktop sliku s ograničenjem širine i visine */
+  .sponsor-card img.sponsor-desktop-img {
+    display: block !important;
+    width: 100% !important;
+    max-width: 650px !important;
+    height: auto !important;
+    max-height: 120px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}

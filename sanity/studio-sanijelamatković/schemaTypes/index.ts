@@ -9,5 +9,6 @@ import poetryWorks from "./poetryWorks";
 import prozaFeature from "./prozaFeature";
 import prozaReview from "./prozaReview";
 import galleryPage from "./galleryPage";
+import reklama from "./reklama";
 
-export const schemaTypes = [homePage, aboutPage, poetryPage, poetryWorks, prozaFeature, prozaReview, Blog, misao, RaSl, RaPi, galleryPage]
+export const schemaTypes = [homePage, aboutPage, poetryPage, poetryWorks, prozaFeature, prozaReview, Blog, misao, RaSl, RaPi, galleryPage, reklama]

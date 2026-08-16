@@ -1,5 +1,5 @@
 import {client} from "../../blog/sanity.js";
-
+import "../../../sponsor.js"
 
 const query = `
 *[_type == "blogPost"] | order(publishedAt desc){

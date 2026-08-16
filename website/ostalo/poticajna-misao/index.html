@@ -83,9 +83,16 @@
             <img src="../../images/misaoDana.jpg" style="margin-left: auto; margin-right: auto; display: block" height="600px"; width="auto"; margin-bottom: 5%>
             <em><h1 class="carouselH1" style="font-size: 3.5rem; font-weight: 700;">Poticajne misli</h1></em>
         </section> 
+        <div class="sponsors-section my-4">
+  <span class="partner-label">Sponzori & Partneri</span>
+  <div class="sponsors-grid sponsor-top"></div>
+</div>
         
     <div class="footer" id="footer" style="position: relative; padding: 40px 0; display: flex; flex-direction: column; text-align: center;">
-    
+    <div class="sponsors-section my-4">
+  <span class="partner-label">Sponzori & Partneri</span>
+  <div class="sponsors-grid sponsor-middle"></div>
+</div>
     <!-- 1. The White Overlay: Scaled to fit the footer container perfectly -->
     <div style="height: 100%; width: 100%; position: absolute; top: 0; left: 0; z-index: 1; opacity: 0.7; background-color: white;"></div>
     <h3 class="footerH3">Kontakt</h3>
@@ -124,6 +131,7 @@
 </html>
     <script type="module">
         import { client } from "../../blog/sanity.js";
+        import "../../../sponsor.js"
 
         const posts = await client.fetch(`
             *[_type == "Poticajna-misao"] | order(date desc) {

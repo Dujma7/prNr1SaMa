@@ -1,5 +1,6 @@
 
 import { client } from "../../blog/sanity.js";
+import "../../../sponsor.js"
 
 const params = new URLSearchParams(window.location.search);
 const slug = params.get("slug");

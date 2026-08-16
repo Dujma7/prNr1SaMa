@@ -1,5 +1,5 @@
 import { client } from "../../blog/sanity.js";
-
+import "../../../sponsor.js"
 async function loadProzaContent() {
   try {
     // 1. Fetch Prose Features

@@ -1,4 +1,5 @@
 import { client } from "../../blog/sanity.js";
+import "../../../sponsor.js"
 
 async function renderDynamicContent() {
   try {
@@ -67,3 +68,4 @@ if (works && works.length > 0) {
 }
 
 document.addEventListener('DOMContentLoaded', renderDynamicContent);
+
