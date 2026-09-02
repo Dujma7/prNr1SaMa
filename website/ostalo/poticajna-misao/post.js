@@ -7,27 +7,30 @@ const slug = params.get("slug");
 const query = `
 *[_type == "Poticajna-misao" && slug.current == $slug][0]{
   title,
+  slug,
   publishedAt,
+  _createdAt,
+  misao,
   content
 }
 `;
 
 function renderPortableText(blocks) {
-    if (!blocks) return "";
+    if (!blocks || !Array.isArray(blocks)) return "";
+
     return blocks.map(block => {
-        if (block._type !== "block") return "";
+        if (block._type !== "block" || !block.children) return "";
 
         let children = block.children.map(child => {
-            let text = child.text;
+            let text = child.text || "";
 
-            // Bold
-            if (child.marks && child.marks.includes("strong")) {
-                text = `<strong>${text}</strong>`;
-            }
-
-            // Italic
-            if (child.marks && child.marks.includes("em")) {
-                text = `<em>${text}</em>`;
+            if (child.marks && Array.isArray(child.marks)) {
+                if (child.marks.includes("strong")) {
+                    text = `<strong>${text}</strong>`;
+                }
+                if (child.marks.includes("em")) {
+                    text = `<em>${text}</em>`;
+                }
             }
 
             return text;
@@ -54,100 +57,160 @@ function renderPortableText(blocks) {
     }).join("");
 }
 
-// Helper to safely set meta tags
-function setMetaTag(nameOrProperty, value, isProperty = false) {
-    const attribute = isProperty ? "property" : "name";
-    let element = document.querySelector(`meta[${attribute}="${nameOrProperty}"]`);
-    
-    if (!element) {
-        element = document.createElement("meta");
-        element.setAttribute(attribute, nameOrProperty);
-        document.head.appendChild(element);
+function setupShareButtons(title) {
+    const currentUrl = window.location.href;
+    const encodedUrl = encodeURIComponent(currentUrl);
+    const encodedTitle = encodeURIComponent(title);
+
+    // Facebook
+    const fbBtn = document.getElementById("share-facebook");
+    if (fbBtn) {
+        fbBtn.href = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
     }
-    
-    element.setAttribute("content", value);
+
+    // Twitter / X
+    const twBtn = document.getElementById("share-twitter");
+    if (twBtn) {
+        twBtn.href = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`;
+    }
+
+    // WhatsApp
+    const waBtn = document.getElementById("share-whatsapp");
+    if (waBtn) {
+        waBtn.href = `https://api.whatsapp.com/send?text=${encodedTitle}%20${encodedUrl}`;
+    }
+
+    // Instagram / Native Share
+    const igBtn = document.getElementById("share-instagram");
+    if (igBtn) {
+        igBtn.addEventListener("click", () => {
+            if (navigator.share) {
+                navigator.share({
+                    title: title,
+                    url: currentUrl
+                }).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(currentUrl).then(() => {
+                    alert("Poveznica je kopirana! Otvorite Instagram i zalijepite poveznicu u svoju objavu ili poruku.");
+                });
+            }
+        });
+    }
+
+    // Copy Link
+    const copyBtn = document.getElementById("copy-link-btn");
+    if (copyBtn) {
+        copyBtn.addEventListener("click", () => {
+            navigator.clipboard.writeText(currentUrl).then(() => {
+                alert("Poveznica je kopirana u međuspremnik!");
+            });
+        });
+    }
 }
 
-// Helper to extract clean plain text excerpt for Meta Description
-function extractPlainText(blocks) {
-    if (!blocks || !Array.isArray(blocks)) return "";
-    return blocks
-        .filter(block => block._type === "block")
-        .map(block => block.children.map(c => c.text).join(""))
-        .join(" ")
-        .slice(0, 155);
-}
+function updateMetadata(post) {
+    const baseUrl = "https://sanijelamatkovic.ba";
+    const postSlug = post.slug?.current || slug || "";
+    const currentUrl = `${baseUrl}/website/ostalo/poticajna-misao/post.html?slug=${postSlug}`;
 
-// Helper to inject JSON-LD Schema.org
-function setStructuredData(post) {
-    let scriptTag = document.getElementById("dynamic-schema");
-    if (!scriptTag) {
-        scriptTag = document.createElement("script");
-        scriptTag.id = "dynamic-schema";
-        scriptTag.type = "application/ld+json";
-        document.head.appendChild(scriptTag);
+    let descriptionSnippet = post.misao || "Poticajna misao autorice Sanijele Matković.";
+    if (!post.misao && Array.isArray(post.content) && post.content.length > 0 && post.content[0].children) {
+        descriptionSnippet = post.content[0].children
+            .map(child => child.text || "")
+            .join(' ')
+            .trim()
+            .substring(0, 155) + "...";
     }
+
+    const pageTitle = `${post.title} | Poticajna misao | Sanijela Matković`;
+    const fallbackImage = `${baseUrl}/website/images/promocija5.jpg`;
+
+    document.title = pageTitle;
+
+    const pageTitleEl = document.getElementById('page-title');
+    if (pageTitleEl) pageTitleEl.innerText = pageTitle;
+
+    const setAttr = (id, attr, val) => {
+        const el = document.getElementById(id);
+        if (el) el.setAttribute(attr, val);
+    };
+
+    setAttr('dynamic-desc', 'content', descriptionSnippet);
+    setAttr('dynamic-canonical', 'href', currentUrl);
+
+    setAttr('dynamic-og-url', 'content', currentUrl);
+    setAttr('dynamic-og-title', 'content', pageTitle);
+    setAttr('dynamic-og-desc', 'content', descriptionSnippet);
+    setAttr('dynamic-og-image', 'content', fallbackImage);
+
+    setAttr('dynamic-twitter-url', 'content', currentUrl);
+    setAttr('dynamic-twitter-title', 'content', pageTitle);
+    setAttr('dynamic-twitter-desc', 'content', descriptionSnippet);
+    setAttr('dynamic-twitter-image', 'content', fallbackImage);
 
     const schemaData = {
         "@context": "https://schema.org",
-        "@type": "BlogPosting",
+        "@type": "Article",
         "headline": post.title,
-        "datePublished": post.publishedAt || new Date().toISOString(),
+        "datePublished": post.publishedAt || post._createdAt,
         "author": {
             "@type": "Person",
-            "name": "Sanijela Matković"
+            "name": "Sanijela Matković",
+            "url": baseUrl
         },
-        "publisher": {
-            "@type": "Person",
-            "name": "Sanijela Matković"
-        },
+        "description": descriptionSnippet,
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": window.location.href
+            "@id": currentUrl
         }
     };
 
-    scriptTag.textContent = JSON.stringify(schemaData);
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(schemaData);
+    document.head.appendChild(script);
 }
 
 async function loadPost() {
-    const post = await client.fetch(query, { slug });
+    const titleEl = document.getElementById("title");
 
-    if (!post) {
-        document.getElementById("title").textContent = "Objava nije pronađena";
+    if (!slug) {
+        if (titleEl) titleEl.textContent = "Objava nije pronađena";
         return;
     }
 
-    // 1. Render DOM Elements
-    document.getElementById("title").textContent = post.title;
-    document.getElementById("post-content").innerHTML = renderPortableText(post.content);
+    try {
+        const post = await client.fetch(query, { slug });
 
-    // Format & Render Date if element exists
-    if (post.publishedAt) {
-        const dateElement = document.getElementById("post-datetime");
-        if (dateElement) {
-            const formattedDate = new Date(post.publishedAt).toLocaleDateString("hr-HR", {
+        if (!post) {
+            if (titleEl) titleEl.textContent = "Objava nije pronađena";
+            return;
+        }
+
+        if (titleEl) titleEl.textContent = post.title;
+
+        const dateEl = document.getElementById("post-date");
+        if (dateEl && post.publishedAt) {
+            const date = new Date(post.publishedAt);
+            dateEl.textContent = date.toLocaleDateString("hr-HR", {
                 day: "numeric",
                 month: "long",
                 year: "numeric"
             });
-            dateElement.textContent = formattedDate;
-            dateElement.setAttribute("datetime", post.publishedAt);
         }
+
+        const contentEl = document.getElementById("post-content");
+        if (contentEl) {
+            contentEl.innerHTML = renderPortableText(post.content);
+        }
+
+        setupShareButtons(post.title);
+        updateMetadata(post);
+
+    } catch (err) {
+        console.error("Greška pri učitavanju objave:", err);
+        if (titleEl) titleEl.textContent = "Greška pri učitavanju objave";
     }
-
-    // 2. Dynamic SEO Injection
-    const plainExcerpt = extractPlainText(post.content) || `${post.title} - Poticajna misao autorice Sanijele Matković.`;
-
-    document.title = `${post.title} | Sanijela Matković`;
-    
-    setMetaTag("description", plainExcerpt);
-    setMetaTag("og:title", `${post.title} | Sanijela Matković`, true);
-    setMetaTag("og:description", plainExcerpt, true);
-    setMetaTag("og:url", window.location.href, true);
-
-    // 3. Dynamic Structured Data Schema
-    setStructuredData(post);
 }
 
-loadPost();
+document.addEventListener("DOMContentLoaded", loadPost);

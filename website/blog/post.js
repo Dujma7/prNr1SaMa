@@ -4,7 +4,6 @@ import "../../sponsor.js";
 const params = new URLSearchParams(window.location.search);
 const slug = params.get("slug");
 
-// Fixed GROQ query to return slug explicitly
 const query = `
 *[_type == "BlogPost" && slug.current == $slug][0]{
   title,
@@ -60,10 +59,62 @@ function renderPortableText(blocks) {
     }).join("");
 }
 
-// Helper to update elements safely without throwing Errors if element IDs are missing
 function setElementAttr(id, attr, value) {
     const el = document.getElementById(id);
     if (el) el.setAttribute(attr, value);
+}
+
+function setupShareButtons(postTitle) {
+    const currentUrl = window.location.href;
+    const encodedUrl = encodeURIComponent(currentUrl);
+    const encodedTitle = encodeURIComponent(postTitle);
+
+    // Facebook Share
+    const fbBtn = document.getElementById("share-facebook");
+    if (fbBtn) {
+        fbBtn.href = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+    }
+
+    // Twitter / X Share
+    const twBtn = document.getElementById("share-twitter");
+    if (twBtn) {
+        twBtn.href = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`;
+    }
+
+    // WhatsApp Share
+    const waBtn = document.getElementById("share-whatsapp");
+    if (waBtn) {
+        waBtn.href = `https://api.whatsapp.com/send?text=${encodedTitle}%20${encodedUrl}`;
+    }
+
+    // Instagram Share Handler
+    const igBtn = document.getElementById("share-instagram");
+    if (igBtn) {
+        igBtn.addEventListener("click", () => {
+            if (navigator.share) {
+                // Mobile native share sheet (lets users select Instagram)
+                navigator.share({
+                    title: postTitle,
+                    url: currentUrl
+                }).catch(() => {});
+            } else {
+                // Desktop fallback: copy link to clipboard
+                navigator.clipboard.writeText(currentUrl).then(() => {
+                    alert("Poveznica je kopirana! Otvorite Instagram i zalijepite poveznicu u svoju objavu ili poruku.");
+                });
+            }
+        });
+    }
+
+    // Copy Link
+    const copyBtn = document.getElementById("copy-link-btn");
+    if (copyBtn) {
+        copyBtn.addEventListener("click", () => {
+            navigator.clipboard.writeText(currentUrl).then(() => {
+                alert("Poveznica je kopirana u međuspremnik!");
+            });
+        });
+    }
 }
 
 function updateDynamicMetadata(post) {
@@ -71,7 +122,6 @@ function updateDynamicMetadata(post) {
     const postSlug = post.slug?.current || slug || "";
     const postUrl = `${baseUrl}/website/blog/post.html?slug=${postSlug}`;
 
-    // 1. Generate text excerpt for meta description
     let descriptionSnippet = "Pročitajte novu objavu na blogu Sanijele Matković.";
     const contentBlocks = post.content || post.body || [];
     if (Array.isArray(contentBlocks) && contentBlocks.length > 0 && contentBlocks[0].children) {
@@ -82,31 +132,24 @@ function updateDynamicMetadata(post) {
             .substring(0, 160) + "...";
     }
 
-    // 2. Determine Image URL
     const imageUrl = post.imageUrl || `${baseUrl}/website/images/promocija5.jpg`;
-
-    // 3. Update Page Title
     const formattedTitle = `${post.title} | Blog Sanijele Matković`;
     document.title = formattedTitle;
 
-    // 4. Update HTML Head Meta Tags safely
     setElementAttr('dynamic-title', 'innerText', formattedTitle);
     setElementAttr('dynamic-desc', 'content', descriptionSnippet);
     setElementAttr('dynamic-canonical', 'href', postUrl);
 
-    // 5. Update Open Graph Meta Tags
     setElementAttr('dynamic-og-url', 'content', postUrl);
     setElementAttr('dynamic-og-title', 'content', post.title);
     setElementAttr('dynamic-og-desc', 'content', descriptionSnippet);
     setElementAttr('dynamic-og-image', 'content', imageUrl);
 
-    // 6. Update Twitter Meta Tags
     setElementAttr('dynamic-twitter-url', 'content', postUrl);
     setElementAttr('dynamic-twitter-title', 'content', post.title);
     setElementAttr('dynamic-twitter-desc', 'content', descriptionSnippet);
     setElementAttr('dynamic-twitter-image', 'content', imageUrl);
 
-    // 7. Inject JSON-LD Schema
     const schemaData = {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
@@ -169,6 +212,15 @@ async function loadPost() {
             });
         }
 
+        // Render Main Featured Image below title
+        const imageWrapper = document.getElementById("post-image-wrapper");
+        const mainImage = document.getElementById("post-main-image");
+        if (post.imageUrl && imageWrapper && mainImage) {
+            mainImage.src = post.imageUrl;
+            mainImage.alt = post.title;
+            imageWrapper.style.display = "block";
+        }
+
         // Render Portable Content
         const contentData = post.content || post.body || [];
         const contentEl = document.getElementById("post-content") || document.getElementById("content");
@@ -176,7 +228,9 @@ async function loadPost() {
             contentEl.innerHTML = renderPortableText(contentData);
         }
 
-        // Apply metadata and JSON-LD dynamic schema
+        // Initialize Share Buttons
+        setupShareButtons(post.title);
+
         updateDynamicMetadata(post);
 
     } catch (err) {

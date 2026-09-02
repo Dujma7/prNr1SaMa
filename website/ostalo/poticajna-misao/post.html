@@ -3,28 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Dynamic Title fallback; will be updated via JavaScript post.js -->
-    <title>Poticajna Misao | Sanijela Matković</title>
-    <meta name="description" content="Pročitajte inspirativne poticajne misli i citate autorice Sanijele Matković.">
-    <meta name="keywords" content="Sanijela Matković, poticajna misao, misao dana, citati, inspiracija, duhovna poezija">
+
+    <!-- Primary Meta Tags -->
+    <title id="page-title">Učitavanje... | Sanijela Matković</title>
+    <meta name="description" id="dynamic-desc" content="Poticajna misao autorice Sanijele Matković.">
     <meta name="author" content="Sanijela Matković">
     <meta name="robots" content="index, follow">
+    <link rel="canonical" id="dynamic-canonical" href="https://sanijelamatkovic.ba/website/ostalo/poticajna-misao/">
 
-    <!-- Open Graph / Social Media -->
+    <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Poticajna Misao | Sanijela Matković">
-    <meta property="og:description" content="Inspirativne poticajne misli i duhovni citati autorice Sanijele Matković.">
-    <meta property="og:locale" content="hr_HR">
+    <meta property="og:url" id="dynamic-og-url" content="https://sanijelamatkovic.ba/website/ostalo/poticajna-misao/">
+    <meta property="og:title" id="dynamic-og-title" content="Učitavanje... | Sanijela Matković">
+    <meta property="og:description" id="dynamic-og-desc" content="Poticajna misao autorice Sanijele Matković.">
+    <meta property="og:image" id="dynamic-og-image" content="https://sanijelamatkovic.ba/website/images/promocija5.jpg">
+    <meta property="og:locale" content="hr_BA">
 
-    <!-- CSS Links and Bootstrap -->
+    <!-- Twitter / X -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" id="dynamic-twitter-url" content="https://sanijelamatkovic.ba/website/ostalo/poticajna-misao/">
+    <meta property="twitter:title" id="dynamic-twitter-title" content="Učitavanje... | Sanijela Matković">
+    <meta property="twitter:description" id="dynamic-twitter-desc" content="Poticajna misao autorice Sanijele Matković.">
+    <meta property="twitter:image" id="dynamic-twitter-image" content="https://sanijelamatkovic.ba/website/images/promocija5.jpg">
+
+    <!-- CSS Link and Bootstrap -->
     <link rel="stylesheet" href="../../styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=mail" />
 </head>
@@ -32,7 +41,7 @@
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light nav-col" style="padding-top: 50px; position: relative; z-index: 2;">
-        <a class="navbar-brand" style="margin-left: 5%; font-size: 1.5rem;" href="../../../">SANIJELA MATKOVIĆ</a>
+        <a class="navbar-brand" style="margin-left: 5%;font-size: 1.5rem;" href="../../../">SANIJELA MATKOVIĆ</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -40,16 +49,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a translate="no" class="nav-link" href="../../../">HOME</a>
+                    <a translate="no" class="nav-link" href="../../../">HOME<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a translate="no" class="nav-link" href="../../about/">O MENI</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownArt" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         UMJETNOST
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownArt">
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="../../umjetnost/poezija/">POEZIJA</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="../../umjetnost/proza/">PROZA</a>
@@ -58,16 +67,16 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="../../blog/">BLOG</a>
+                    <a class="nav-link" href="../../blog/">BLOG</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#footer">KNJIGE</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link-end nav-link dropdown-toggle" href="#" id="navbarDropdownOther" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link-end active nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         OSTALO
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownOther">
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                         <a class="dropdown-item" href="../kazaliste/">KAZALIŠTE</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="../poticajna-misao/">POTICAJNA MISAO</a>
@@ -85,17 +94,32 @@
 
     <!-- Main Content Container -->
     <main class="post-container">
-        <article itemscope itemtype="https://schema.org/BlogPosting">
-            <h1 id="title" itemprop="headline" style="text-align: center;"></h1>
+        <h1 id="title" style="text-align: center;"></h1>
+        <p id="post-date" class="post-date"></p>
 
-            <p id="post-date" class="post-date">
-                <time id="post-datetime" itemprop="datePublished"></time>
-            </p>
+        <!-- Social Media Sharing Buttons -->
+        <div class="share-buttons" style="display: flex; justify-content: center; align-items: center; gap: 15px; margin: 25px 0;">
+            <a id="share-facebook" href="#" target="_blank" rel="noopener noreferrer" style="color: #1877F2; font-size: 1.5rem;" title="Podijeli na Facebooku">
+                <i class="fa-brands fa-square-facebook"></i>
+            </a>
+            <a id="share-twitter" href="#" target="_blank" rel="noopener noreferrer" style="color: #000000; font-size: 1.5rem;" title="Podijeli na X (Twitter)">
+                <i class="fa-brands fa-square-x-twitter"></i>
+            </a>
+            <a id="share-whatsapp" href="#" target="_blank" rel="noopener noreferrer" style="color: #25D366; font-size: 1.5rem;" title="Podijeli na WhatsAppu">
+                <i class="fa-brands fa-square-whatsapp"></i>
+            </a>
+            <button id="share-instagram" style="background: none; border: none; cursor: pointer; color: #E4405F; font-size: 1.5rem; padding: 0;" title="Podijeli na Instagramu">
+                <i class="fa-brands fa-instagram"></i>
+            </button>
+            <button id="copy-link-btn" style="background: none; border: none; cursor: pointer; color: #555; font-size: 1.5rem; padding: 0;" title="Kopiraj poveznicu">
+                <i class="fa-solid fa-link"></i>
+            </button>
+        </div>
 
-            <div id="content" class="post-content" itemprop="articleBody">
-                <div id="post-content" class="portable-text"></div>
-            </div>
-        </article>
+        <div class="post-content">
+            <!-- Dynamic Sanity Portable Text Content container -->
+            <div id="post-content" class="portable-text"></div>
+        </div>
 
         <div class="sponsors-section my-4">
             <span class="partner-label">Sponzori & Partneri</span>
@@ -103,43 +127,48 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer" id="footer" style="position: relative; padding: 40px 0; display: flex; flex-direction: column; text-align: center;">
+    <!-- Footer Section -->
+    <div class="footer" id="footer" style="position: relative; padding: 40px 0; display: flex; flex-direction: column; text-align: center;">
         <div class="sponsors-section my-4">
             <span class="partner-label">Sponzori & Partneri</span>
             <div class="sponsors-grid sponsor-middle"></div>
         </div>
-
         <div style="height: 100%; width: 100%; position: absolute; top: 0; left: 0; z-index: 1; opacity: 0.7; background-color: white;"></div>
-        
+
         <h3 class="footerH3" style="position: relative; z-index: 2;">Kontakt</h3>
 
         <div class="footercon" style="display: flex; flex-direction: column; gap: 15px; margin-top: 5%; margin-bottom: 15px; position: relative; z-index: 2; margin-left: auto; margin-right: auto;">
+            <!-- Email -->
             <div style="width: 100%; display: block; text-align: center;">
-                <i class="fa-solid fa-envelope fa-xl" style="margin-right: 10px;"></i> 
-                <p class="footerP" style="font-weight: 900; margin: 0;">sanijelaknjige@gmail.com</p> 
+                <i class="fa-solid fa-envelope fa-xl" style="margin-right: 10px;"></i>
+                <p class="footerP" style="font-weight: 900; margin: 0; display: inline-block;">sanijelaknjige@gmail.com</p>
             </div>
 
-            <a class="aMadeBy" href="https://www.instagram.com/artssanijela_m/" target="_blank" rel="noopener" style="align-items: center; text-decoration: none; color: inherit;">
+            <!-- Instagram -->
+            <a class="aMadeBy" href="https://www.instagram.com/artssanijela_m/" style="align-items: center; text-decoration: none; color: inherit;">
                 <i class="fa-brands fa-instagram fa-xl" style="margin-right: 10px;"></i>
-                <p class="footerP" style="font-weight: 900; margin: 0;">artssanijela_m</p> 
+                <p class="footerP" style="font-weight: 900; margin: 0; display: inline-block;">artssanijela_m</p>
             </a>
 
-            <a class="aMadeBy" href="https://www.facebook.com/poetesa.poezija?locale=bn_IN" target="_blank" rel="noopener" style="align-items: center; text-decoration: none; color: inherit;">
+            <!-- Facebook -->
+            <a class="aMadeBy" href="https://www.facebook.com/poetesa.poezija?locale=bn_IN" style="align-items: center; text-decoration: none; color: inherit;">
                 <i class="fa-brands fa-square-facebook fa-xl" style="margin-right: 10px;"></i>
-                <p class="footerP" style="font-weight: 900; margin: 0;">Doza Umjetnosti</p> 
+                <p class="footerP" style="font-weight: 900; margin: 0; display: inline-block;">Doza Umjetnosti</p>
             </a>
         </div>
 
+        <!-- Copyright -->
         <p class="footerP" style="position: relative; z-index: 2; margin-bottom: 5px; display: flex; margin-left: auto; margin-right: auto;">© Sanijela Matković 2026</p>
         <p class="footerMadeBy" style="position: relative; z-index: 2; margin: 0; display: flex; margin-right: auto; margin-left: auto;">Made by ‎ <a class="aMadeBy" href="https://dujma7.github.io/Personal-Website/">Zvonko Dujmović</a></p>
-    </footer>
+    </div>
 
     <!-- Scripts -->
     <script src="https://kit.fontawesome.com/f900d7241a.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!-- Sanity Integration Script -->
     <script type="module" src="./post.js"></script>
 </body>
 </html>
