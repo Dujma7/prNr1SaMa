@@ -5,7 +5,6 @@ export async function initSponsors() {
   const middleSlot = document.querySelector('.sponsor-middle');
   const bottomSlot = document.querySelector('.sponsor-bottom');
 
-  // Ako na stranici nema sponzorskih utora, prekini izvođenje
   if (!topSlot && !middleSlot && !bottomSlot) return;
 
   const query = `*[_type == "sponsorAd" && isActive == true]{
@@ -19,7 +18,6 @@ export async function initSponsors() {
     const sponsors = await client.fetch(query);
     if (!sponsors || sponsors.length === 0) return;
 
-    // Pomoćna funkcija za generiranje HTML-a pojedinačne kartice
     const createAdHTML = (sponsor) => {
       if (!sponsor) return '';
       const imageHTML = sponsor.mobileUrl ? `
@@ -38,22 +36,20 @@ export async function initSponsors() {
       `;
     };
 
-    // Ako ima više reklama, možemo ih nasumično promiješati (Fisher-Yates shuffle)
+    // Shuffle active ads
     const shuffledSponsors = [...sponsors].sort(() => 0.5 - Math.random());
 
-    // Popuni gornji slot (1. reklama)
+    // Render each ad once if available; empty slots remain untouched
     if (topSlot && shuffledSponsors[0]) {
       topSlot.innerHTML = createAdHTML(shuffledSponsors[0]);
     }
 
-    // Popuni srednji slot (2. reklama)
-    if (middleSlot && (shuffledSponsors[1] || shuffledSponsors[0])) {
-      middleSlot.innerHTML = createAdHTML(shuffledSponsors[1] || shuffledSponsors[0]);
+    if (middleSlot && shuffledSponsors[1]) {
+      middleSlot.innerHTML = createAdHTML(shuffledSponsors[1]);
     }
 
-    // Popuni donji slot (3. reklama)
-    if (bottomSlot && (shuffledSponsors[2] || shuffledSponsors[0])) {
-      bottomSlot.innerHTML = createAdHTML(shuffledSponsors[2] || shuffledSponsors[0]);
+    if (bottomSlot && shuffledSponsors[2]) {
+      bottomSlot.innerHTML = createAdHTML(shuffledSponsors[2]);
     }
 
   } catch (error) {
