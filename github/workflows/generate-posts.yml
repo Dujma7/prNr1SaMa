@@ -1,9 +1,9 @@
+
 name: Generate blog post pages
 
 on:
   push:
-    branches:
-      - main
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -32,4 +32,3 @@ jobs:
             git commit -m "Generate blog post pages"
             git push
           fi
-
