@@ -3,7 +3,12 @@ import { client } from "./sanity.js";
 import "../../sponsor.js";
 
 const params = new URLSearchParams(window.location.search);
-const slug = params.get("slug");
+
+const pathSlug =
+    window.location.pathname.match(/post-(.+)\.html$/)?.[1];
+
+const slug =
+    params.get("slug") || pathSlug;
 
 const query = `
 *[_type == "BlogPost" && slug.current == $slug][0]{
