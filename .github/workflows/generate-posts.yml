@@ -2,6 +2,8 @@ name: Generate blog post pages
 
 on:
   push:
+  repository_dispatch:
+    types: [sanity-publish]
   workflow_dispatch:
 
 concurrency:
@@ -12,30 +14,17 @@ permissions:
   contents: write
 
 jobs:
-  generate:
+  generate-posts:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
+      - name: Generate static blog pages
+        run: node scripts/generate-posts.js
 
-      # Use "npm install" instead if you have no package-lock.json
-      - name: Install dependencies
-        run: npm ci
-
-      # REPLACE with the exact command you currently run manually
-      - name: Generate pages
-        run: npm run generate-posts
-        env:
-          # Only needed if your script reads from Sanity with these values
-          SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
-          SANITY_DATASET: ${{ secrets.SANITY_DATASET }}
-
-      - name: Commit and push generated pages
+      - name: Commit generated pages
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
