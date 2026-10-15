@@ -2,7 +2,13 @@ name: Generate blog post pages
 
 on:
   push:
+  repository_dispatch:
+    types: [sanity-publish]
   workflow_dispatch:
+
+concurrency:
+  group: generate-posts
+  cancel-in-progress: true
 
 permissions:
   contents: write
