@@ -35,5 +35,6 @@ jobs:
             echo "No changes to generated pages."
           else
             git commit -m "Generate blog post pages"
+            git pull --rebase
             git push
           fi
