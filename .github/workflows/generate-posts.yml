@@ -29,7 +29,7 @@ jobs:
 
       # REPLACE with the exact command you currently run manually
       - name: Generate pages
-        run: npm run generate-pages
+        run: npm run generate-posts
         env:
           # Only needed if your script reads from Sanity with these values
           SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
